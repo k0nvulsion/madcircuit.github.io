@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="MAD CIRCUIT - a chaotic retro pixel-art kart racer"
+  >
+
+  <title>MAD CIRCUIT</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main id="game-shell">
+    <header id="game-title">
+      <h1>MAD CIRCUIT</h1>
+      <p>very very early access( or in other words a prototype )</p>
+    </header>
+
+    <section id="game-frame">
+      <canvas
+        id="game-canvas"
+        width="256"
+        height="240"
+        aria-label="MAD CIRCUIT game canvas"
+      ></canvas>
+
+      <div id="loading-screen">
+        LOADING...
+      </div>
+    </section>
+
+    <section id="controls">
+      <span>W / ↑</span> ACCELERATE
+      <span>S / ↓</span> BRAKE
+      <span>A / ←</span> STEER LEFT
+      <span>D / →</span> STEER RIGHT
+      <span>SPACE</span> DRIFT
+      <span>ESC</span> PAUSE
+      <br>
+      <span>YES I KNOW THE SCREEN IS TINY!!! ZOOM IN FOR NOW</span>
+      <span>AND YES I AM AWARE OF THE CAR BEING ROTATED IN A WEIRD WAY!! THIS IS CURSED AND I DONT KNOW HOW TO FIX IT</span>
+
+    </section>
+
+    <noscript>
+      MAD CIRCUIT requires JavaScript to run.
+    </noscript>
+  </main>
+
+    <script type="module">
+    import { Game } from "./src/game.js";
+
+    const canvas = document.querySelector("#game-canvas");
+    const loadingScreen = document.querySelector("#loading-screen");
+
+    const game = new Game(canvas);
+
+    game.start().finally(() => {
+      loadingScreen.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>
